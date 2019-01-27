@@ -6,16 +6,14 @@ export default function CalendarNavSelector(props) {
 
   for (let monthIndex = 0; monthIndex < 12; monthIndex++) {
     renderMonthOptions.push(
-      <option value={monthIndex} key={monthIndex}>{monthNames[monthIndex]} {props.year}</option>
+      <option key={monthIndex} value={monthIndex}>{monthNames[monthIndex]} {props.year}</option>
     );
   }
 
-  const onChange = (event) => {
-    props.onChange(parseInt(event.target.value, 10), event);
-  }
+  const onChange = (event) => props.onChange(parseInt(event.target.value, 10), event)
 
   return (
-    <select value={props.month} onChange={onChange}>
+    <select className="nav__months-select" value={props.month} onChange={onChange}>
       {renderMonthOptions}
     </select>
   );

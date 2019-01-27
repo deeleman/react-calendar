@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import CalendarMonth from './CalendarMonth';
 import CalendarNav from './CalendarNav';
 import { monthNames } from './i18n/en-gb';
 
 export default class Calendar extends Component {
   static propTypes = {
     year: PropTypes.number,
-    month: PropTypes.number
+    month: PropTypes.number,
+    onDateClick: PropTypes.func,
   }
 
   static defaultProps = {
     year: (new Date()).getFullYear(),
-    month: (new Date()).getMonth()
+    month: (new Date()).getMonth(),
   }
 
   componentWillMount() {
@@ -21,11 +23,17 @@ export default class Calendar extends Component {
     }));
   }
 
-  updateMonthAndYear = (month, year) => {
+  updateMonthAndYear(month, year) {
     this.setState({
       month,
       year
     });
+  }
+
+  onDateClick(date) {
+    if (this.props.onDateClick) {
+      this.props.onDateClick(date);
+    }
   }
 
   render() {
@@ -34,13 +42,13 @@ export default class Calendar extends Component {
         <header>
           <h1>{ monthNames[this.state.month] } {this.state.year}</h1>
         </header>
-        <article>
-          <nav>
-            <CalendarNav month={this.state.month} year={this.state.year} onChange={this.updateMonthAndYear}></CalendarNav>
+        <article className="calendar">
+          <nav className="calendar__nav">
+            <CalendarNav {...this.state} onChange={this.updateMonthAndYear.bind(this)}></CalendarNav>
           </nav>
-          <div>
-            <pre>Calendar placeholder</pre>
-          </div>
+          <section className="calendar__main">
+            <CalendarMonth {...this.state} onDateClick={this.onDateClick.bind(this)}></CalendarMonth>
+          </section>
         </article>
         <footer>MIT License</footer>
       </>
