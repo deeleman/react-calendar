@@ -1,0 +1,9 @@
+// Slightly based on ITCSS: https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/
+
+// Global SASS tools and settings - do not output any actual CSS
+@import './settings/module';
+@import './tools/module';
+
+// Actual generated CSS - Global rules to be injected just once
+@import './generic/module';
+@import './utils/module';

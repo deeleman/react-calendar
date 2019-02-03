@@ -1,0 +1,14 @@
+@import 'calendar-sass-lib';
+
+.sidebar {
+  background: #333;
+  width: 60px;
+  height: 100vh;
+  text-align: center;
+
+  &__logo {
+    display: block;
+    padding-top: 1em;
+    color: #EBEBEB;
+  }
+}

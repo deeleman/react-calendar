@@ -50,7 +50,6 @@ export default class Calendar extends Component {
             <CalendarMonth {...this.state} onDateClick={this.onDateClick.bind(this)}></CalendarMonth>
           </section>
         </article>
-        <footer>MIT License</footer>
       </>
     )
   }
