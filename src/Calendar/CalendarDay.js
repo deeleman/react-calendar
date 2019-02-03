@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 export default function CalendarDay(props) {
@@ -16,4 +17,10 @@ export default function CalendarDay(props) {
       <strong className="calendar__date">{props.date.getDate()}</strong>
     </li>
   );
+}
+
+CalendarDay.propTypes = {
+  month: PropTypes.number.isRequired,
+  date: PropTypes.date,
+  onClick: PropTypes.func,
 }

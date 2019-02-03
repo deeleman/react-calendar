@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import CalendarDay from './CalendarDay';
 
@@ -32,4 +33,10 @@ export default function CalendarMonth(props) {
       {calendarDayElements}
     </ul>
   );
+}
+
+CalendarMonth.propTypes = {
+  month: PropTypes.number.isRequired,
+  year: PropTypes.number.isRequired,
+  onDateClick: PropTypes.func,
 }

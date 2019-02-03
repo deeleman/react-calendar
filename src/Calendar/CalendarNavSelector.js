@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { monthNames } from './i18n/en-gb';
 
@@ -10,4 +11,10 @@ export default function CalendarNavSelector(props) {
       {monthIndexes.map(monthIndex => <option key={monthIndex} value={monthIndex}>{monthNames[monthIndex]} {props.year}</option>)}
     </select>
   );
+}
+
+CalendarNavSelector.propTypes = {
+  month: PropTypes.number.isRequired,
+  year: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
